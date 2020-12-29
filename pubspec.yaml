@@ -1,6 +1,6 @@
 name: dynamic_themes
 description: Allows you to specify a number of color themes for the user to choose from. Persits the selected theme across app restarts.
-version: 0.1.0
+version: 0.1.0+1
 repository: https://github.com/JulianAssmann/flutter_dynamic_themes
 
 environment:

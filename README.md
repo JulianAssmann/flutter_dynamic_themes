@@ -1,6 +1,8 @@
 # dynamic_themes
 
-This package allows you to specify a number of color themes for the user to choose from. It persits the selected theme across app restarts.
+## Dynamically change between multiple themes
+
+This package allows you to specify multiple themes for the user to choose from. The theme can be updated dynamically during runtime. The package persits the selected theme across app restarts.
 
 ![image](assets/demo.png)
 
