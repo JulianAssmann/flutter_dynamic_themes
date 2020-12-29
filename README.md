@@ -8,18 +8,7 @@ This package allows you to specify multiple themes for the user to choose from. 
 
 ## Getting Started
 
-To use this plugin, add `dynamic_themes` as a [dependency in your `pubspec.yaml` file](https://flutter.dev/docs/development/packages-and-plugins/using-packages)
-
-```yaml
-dependencies:
-    dynamic_themes: ^0.1.0
-```
-
-run `flutter pub get` and import the package:
-
-```dart
-import 'package:dynamic_themes/dynamic_themes.dart';
-```
+Follow the instructions [here](https://pub.dev/packages/dynamic_themes/install).
 
 ## Usage
 
