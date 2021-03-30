@@ -70,7 +70,7 @@ class DynamicThemesExampleApp extends StatelessWidget {
 class HomePage extends StatefulWidget {
   final String title;
 
-  const HomePage({Key key, this.title}) : super(key: key);
+  const HomePage({Key? key, required this.title}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    dropdownValue = DynamicTheme.of(context).themeId;
+    dropdownValue = DynamicTheme.of(context)!.themeId;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -114,8 +114,8 @@ class _HomePageState extends State<HomePage> {
                 child: Text(AppThemes.toStr(AppThemes.DarkRed)),
               )
             ], 
-            onChanged: (themeId) async {
-              await DynamicTheme.of(context).setTheme(themeId);
+            onChanged: (dynamic themeId) async {
+              await DynamicTheme.of(context)!.setTheme(themeId);
               setState(() {
                 dropdownValue = themeId;
               });
@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> {
             child: Center(
               child: Text('Container in accent color', textAlign: TextAlign.center,)),
           ),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () {},
             child: Text('Raised Button'),
           ),

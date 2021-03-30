@@ -48,18 +48,17 @@ class DynamicTheme extends StatefulWidget {
   /// }
   /// ```
   const DynamicTheme(
-      {Key key,
-      @required this.builder,
-      @required this.themeCollection,
-      this.defaultThemeId = 0})
-      : assert(themeCollection != null),
+      {Key? key,
+      required this.builder,
+      required this.themeCollection,
+      this.defaultThemeId = 0}) :
         super(key: key);
 
   @override
   _DynamicThemeState createState() => _DynamicThemeState();
 
   /// Returns the data from the closest [DynamicTheme] instance that encloses the given context.
-  static _DynamicThemeState of(BuildContext context) {
+  static _DynamicThemeState? of(BuildContext context) {
     return context.findAncestorStateOfType<_DynamicThemeState>();
   }
 }
@@ -67,14 +66,19 @@ class DynamicTheme extends StatefulWidget {
 /// The data from the closest [DynamicTheme] instance that encloses the given context.
 class _DynamicThemeState extends State<DynamicTheme> {
   static const String _sharedPreferencesKey = 'selectedThemeId';
-  ThemeData _currentTheme;
-  int _currentThemeId;
+  late ThemeData _currentTheme;
+  late int _currentThemeId;
 
   /// Gets the theme currently set.
   ThemeData get theme => _currentTheme;
 
   /// Gets the id of the theme currently set.
   int get themeId => _currentThemeId;
+
+  _DynamicThemeState() {
+    _currentThemeId = widget.defaultThemeId;
+    _currentTheme = widget.themeCollection.fallbackTheme;
+  }
 
   @override
   void initState() {
@@ -123,7 +127,7 @@ class _DynamicThemeState extends State<DynamicTheme> {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     if (prefs.containsKey(_sharedPreferencesKey)) {
       try {
-        return prefs.getInt(_sharedPreferencesKey);
+        return prefs.getInt(_sharedPreferencesKey) ?? widget.defaultThemeId;
       } on Exception {
         return widget.defaultThemeId;
       }

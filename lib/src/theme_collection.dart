@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 /// A collection of theme ID/[ThemeData] pairs, from which you retrieve a
 /// [ThemeData] using its associated theme ID.
 class ThemeCollection {
-  Map<int, ThemeData> _themes;
-  ThemeData _fallbackTheme;
+  late Map<int, ThemeData> _themes;
+  late ThemeData _fallbackTheme;
+
+  /// The fallback theme.
+  ThemeData get fallbackTheme => _fallbackTheme;
 
   /// Creates a new [ThemeCollection].
   ///
@@ -12,7 +15,7 @@ class ThemeCollection {
   /// that already contains themes corresponding to theme IDs.
   ///
   /// [fallbackTheme] is a fallback theme, that is returned by [getTheme]
-  ThemeCollection({Map<int, ThemeData> themes, ThemeData fallbackTheme}) {
+  ThemeCollection({Map<int, ThemeData>? themes, ThemeData? fallbackTheme}) {
     if (themes == null) {
       themes = Map<int, ThemeData>();
     } else {
@@ -35,8 +38,10 @@ class ThemeCollection {
   /// the [fallbackTheme] specified in the constructor
   /// if [themeId] is not registered in the collection.
   ThemeData operator [](int themeId) {
-    if (_themes.containsKey(themeId)) return _themes[themeId];
-    return _fallbackTheme;
+    if (_themes.containsKey(themeId)) 
+      return _themes[themeId]!;
+    else
+      return _fallbackTheme;
   }
 
   /// Associates the [themeId] with the given [theme].
