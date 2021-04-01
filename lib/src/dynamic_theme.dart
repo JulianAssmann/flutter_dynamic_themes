@@ -66,19 +66,14 @@ class DynamicTheme extends StatefulWidget {
 /// The data from the closest [DynamicTheme] instance that encloses the given context.
 class _DynamicThemeState extends State<DynamicTheme> {
   static const String _sharedPreferencesKey = 'selectedThemeId';
-  late ThemeData _currentTheme;
-  late int _currentThemeId;
+  late ThemeData _currentTheme = ThemeData.fallback();
+  int _currentThemeId = 0;
 
   /// Gets the theme currently set.
   ThemeData get theme => _currentTheme;
 
   /// Gets the id of the theme currently set.
   int get themeId => _currentThemeId;
-
-  _DynamicThemeState() {
-    _currentThemeId = widget.defaultThemeId;
-    _currentTheme = widget.themeCollection.fallbackTheme;
-  }
 
   @override
   void initState() {
