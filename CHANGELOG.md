@@ -1,12 +1,16 @@
-## [1.0.0] - 30.3.2021
+## [1.1.0]
 
+* Fix critical bug where app crashes right after restart
+* Improve the example app
+
+## [1.0.0]
 * Add null safety
 
-## [0.1.0+1] - 29.12.2020
+## [0.1.0+1]
 
 * Improve README.md
 * Add .gitignore
 
-## [0.1.0] - 29.12.2020
+## [0.1.0]
 
 * Initial release

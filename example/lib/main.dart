@@ -45,11 +45,7 @@ class DynamicThemesExampleApp extends StatelessWidget {
           accentColor: Colors.blue, 
           buttonTheme: darkButtonTheme,
           floatingActionButtonTheme: darkFABTheme.copyWith(backgroundColor: Colors.blue)),
-        AppThemes.DarkRed: dark.copyWith(
-          accentColor: Colors.red, 
-          buttonTheme: darkButtonTheme, 
-          floatingActionButtonTheme: darkFABTheme.copyWith(backgroundColor: Colors.red),
-        )
+        AppThemes.DarkRed: ThemeData.from(colorScheme: ColorScheme.dark(primary: Colors.red, secondary: Colors.red)),
       }
     );
 
@@ -125,13 +121,35 @@ class _HomePageState extends State<HomePage> {
             margin: EdgeInsets.all(20),
             width: 100,
             height: 100,
+            color: theme.primaryColor,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Container in primary color and primary text theme', 
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).primaryTextTheme.bodyText2
+                ),
+              ),
+            )
+          ),
+          Container(
+            margin: EdgeInsets.all(20),
+            width: 100,
+            height: 100,
             color: theme.accentColor,
             child: Center(
-              child: Text('Container in accent color', textAlign: TextAlign.center,)),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Container in accent color and with accent text theme', 
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).accentTextTheme.bodyText2),
+              )),
           ),
           ElevatedButton(
             onPressed: () {},
-            child: Text('Raised Button'),
+            child: Text('Elevated Button'),
           ),
         ],
         )
