@@ -1,5 +1,7 @@
 # dynamic_themes
 
+ [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/julianassmann)
+
 ## Dynamically change between multiple themes
 
 This package allows you to specify multiple themes for the user to choose from. The theme can be updated dynamically during runtime. The package persits the selected theme across app restarts.
